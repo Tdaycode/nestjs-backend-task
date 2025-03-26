@@ -1,0 +1,103 @@
+{
+	"info": {
+		"_postman_id": "3f8a1b5e-9d23-4f7e-a5c6-2f2e0e4f1a3d",
+		"name": "Authentication GraphQL API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Register User",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation Register($registerInput: RegisterInput!) {\n    register(registerInput: $registerInput) {\n        id\n        email\n        createdAt\n        updatedAt\n    }\n}",
+						"variables": "{\n    \"registerInput\": {\n        \"email\": \"Omo@gmail.com\",\n        \"password\": \"@Password8862\"\n    }\n}"
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/graphql",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation Login($loginInput: LoginInput!) {\n    login(loginInput: $loginInput)\n}",
+						"variables": "{\n    \"loginInput\": {\n        \"email\": \"Omo@gmail.com\",\n        \"password\": \"@Password8862\"\n    }\n}"
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/graphql",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Biometric Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation BiometricLogin($biometricLoginInput: BiometricLoginInput!) {\n    biometricLogin(biometricLoginInput: $biometricLoginInput)\n}",
+						"variables": "{\n    \"biometricLoginInput\": {\n        \"biometricKey\": \"biometricKey\"\n    }\n}"
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/graphql",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:3000",
+			"type": "string"
+		}
+	]
+}
