@@ -10,7 +10,7 @@
 1. Clone the repository
 2. Install dependencies:
 ```bash
-npm install
+yarn install
 ```
 
 3. Copy `.env.example` to `.env` and fill in the required variables
@@ -28,24 +28,25 @@ npx prisma migrate dev
 6. Start the application:
 ```bash
 # Development mode
-npm run start:dev
+yarn run start:dev
 
 # Production mode
-npm run start:prod
+yarn run start:prod
 ```
 
 ## Testing
 Run tests using:
 ```bash
-npm test
+yarn test
 ```
 
 ## Project Structure
 - `src/`: Source code
   - `auth/`: Authentication modules
   - `users/`: User-related modules
-  - `prisma/`: Database schema
-  - `graphql/`: GraphQL schema definitions
+  - `prisma/`: prisma Modules
+- `prisma/`: Database schema
+
 
 ## Endpoints
 - GraphQL Playground: `http://localhost:3000/graphql`
