@@ -8,21 +8,7 @@ import { BiometricLoginInput } from '../auth/dto/biometric-login.input';
 
 @Resolver()
 export class AuthResolver {
-  constructor(
-    private userService: UserService,
-    private authService: AuthService,
-  ) {}
-
-  @Query(() => String)
-  sayHello(): string {
-    return 'Hello, GraphQL!';
-  }
-
-  @Mutation(() => UserType)
-  async register(@Args('registerInput') registerInput: RegisterInput) {
-    const { email, password } = registerInput;
-    return this.userService.create(email, password);
-  }
+  constructor(private authService: AuthService) {}
 
   @Mutation(() => String)
   async login(@Args('loginInput') loginInput: LoginInput) {
