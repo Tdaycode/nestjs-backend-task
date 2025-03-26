@@ -45,32 +45,20 @@ export class UserService {
   async findByEmail(email: string) {
     return this.prisma.user.findUnique({ where: { email } });
   }
-
   /**
-   * The function `createWithBiometricKey` creates a new user with an email, biometric key, and hashed
-   * password using bcrypt.
+   * The function creates a new user with a biometric key if the user does not already exist.
    * @param {string} email - The `email` parameter is a string that represents the email address of the
-   * user being created in the `createWithBiometricKey` function.
-   * @param {string} biometricKey - The `biometricKey` parameter in the `createWithBiometricKey` function
-   * is a string that represents the biometric key associated with a user. This key is used for biometric
-   * authentication purposes, such as fingerprint or facial recognition.
-   * @param {string} password - The `password` parameter in the `createWithBiometricKey` function is a
-   * string that represents the user's password. This password is hashed using bcrypt with a cost factor
-   * of 10 before being stored in the database for security reasons.
-   * @returns The `createWithBiometricKey` function is returning a Promise that resolves to the result of
-   * creating a new user in the database using Prisma. The user data includes the provided `email`,
-   * `biometricKey`, and the hashed `password` using bcrypt with a cost factor of 10.
+   * user being created.
+   * @param {string} biometricKey - The `biometricKey` parameter is a string that represents the biometric
+   * key associated with the user being created. This key is used for authentication purposes.
+   * @returns The `createWithBiometricKey` method is returning a Promise that resolves to the newly
+   * created user object with the provided email and biometric key.
    */
-  async createWithBiometricKey(
-    email: string,
-    biometricKey: string,
-    password: string,
-  ) {
+  async createWithBiometricKey(email: string, biometricKey: string) {
     return this.prisma.user.create({
       data: {
         email,
         biometricKey,
-        password: await bcrypt.hash(password, 10),
       },
     });
   }

@@ -37,7 +37,7 @@ yarn run start:prod
 ## Testing
 Run tests using:
 ```bash
-yarn test
+yarn run test
 ```
 
 ## Project Structure

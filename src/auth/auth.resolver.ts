@@ -1,8 +1,5 @@
 import { Resolver, Mutation, Args, Query } from '@nestjs/graphql';
-import { UserService } from '../users/users.service';
 import { AuthService } from './auth.service';
-import { UserType } from '../users/user.type';
-import { RegisterInput } from '../auth/dto/register.input';
 import { LoginInput } from '../auth/dto/login.input';
 import { BiometricLoginInput } from '../auth/dto/biometric-login.input';
 
